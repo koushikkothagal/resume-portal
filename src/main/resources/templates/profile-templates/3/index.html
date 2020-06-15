@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 
 	<title>Jonathan Doe | Web Designer, Director | name@yourdomain.com</title>
@@ -43,7 +43,7 @@
 							<h2>Profile</h2>
 						</div>
 						<div class="yui-u">
-							<p class="enlarge">
+							<p class="enlarge" th:text="${userProfile.summary}">
 								Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change. 
 							</p>
 						</div>
