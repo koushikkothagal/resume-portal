@@ -24,6 +24,30 @@ public class UserProfile {
     @JoinColumn(name = "job_id")
     List<Job> jobs = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JoinColumn(name = "education_id")
+    List<Education> educations = new ArrayList<>();
+
+    @ElementCollection(targetClass=String.class)
+    List<String> skills = new ArrayList<>();
+
+    public List<String> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<String> skills) {
+        this.skills = skills;
+    }
+
+    public List<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(List<Education> educations) {
+        this.educations = educations;
+    }
+
     public List<Job> getJobs() {
         return jobs;
     }
