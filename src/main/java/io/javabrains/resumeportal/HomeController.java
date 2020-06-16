@@ -31,7 +31,8 @@ public class HomeController {
         job1.setDesignation("Designation");
         job1.setId(1);
         job1.setStartDate(LocalDate.of(2020, 1, 1));
-        job1.setEndDate(LocalDate.of(2020, 3, 1));
+        //job1.setEndDate(LocalDate.of(2020, 3, 1));
+        job1.setCurrentJob(true);
         Job job2 = new Job();
         job2.setCompany("Company 2");
         job2.setDesignation("Designation");
@@ -64,4 +65,5 @@ public class HomeController {
 
         return "profile-templates/" + userProfile.getId() + "/index";
     }
+
 }
