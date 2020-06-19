@@ -35,8 +35,55 @@
             <input class="form-control" th:field="*{designation}">
         </div>
 
+        <h3>Experience</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Designation</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Current Job?</th>
+                </tr>
+            </thead>
+            <tr th:each="job, stat: *{jobs}">
+                <td><input class="form-control" th:field="*{jobs[__${stat.index}__].company}"></td>
+                <td><input class="form-control" th:field="*{jobs[__${stat.index}__].designation}"></td>
+                <td><input type="date" class="form-control" th:field="*{jobs[__${stat.index}__].startDate}"></td>
+                <td><input type="date" class="form-control" th:field="*{jobs[__${stat.index}__].endDate}"></td>
+                <td><input type="checkbox" class="form-control" th:field="*{jobs[__${stat.index}__].currentJob}"></td>
+            </tr>
+        </table>
 
 
+        <h3>Education</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>College</th>
+                <th>Qualification</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Summary</th>
+            </tr>
+            </thead>
+            <tr th:each="education, stat: *{educations}">
+                <td><input class="form-control" th:field="*{educations[__${stat.index}__].college}"></td>
+                <td><input class="form-control" th:field="*{educations[__${stat.index}__].qualification}"></td>
+                <td><input type="date" class="form-control" th:field="*{educations[__${stat.index}__].startDate}"></td>
+                <td><input type="date" class="form-control" th:field="*{educations[__${stat.index}__].endDate}"></td>
+                <td><input class="form-control" th:field="*{educations[__${stat.index}__].summary}"></td>
+            </tr>
+        </table>
+
+        <h3>Skills</h3>
+        <table>
+            <tr th:each="skill, stat: *{skills}">
+                <td><input class="form-control" th:field="*{skills[__${stat.index}__]}"></td>
+            </tr>
+        </table>
+
+    <input type="submit" value="Submit">
     </form>
     </div>
 </body>

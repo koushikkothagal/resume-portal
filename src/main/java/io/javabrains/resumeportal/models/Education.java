@@ -1,5 +1,7 @@
 package io.javabrains.resumeportal.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +17,9 @@ public class Education {
     private int id;
     private String college;
     private String qualification;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
     private String summary;
 
