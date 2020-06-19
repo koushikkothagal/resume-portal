@@ -57,6 +57,7 @@
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Current Job?</th>
+                    <th></th>
                 </tr>
             </thead>
             <tr th:each="job, stat: *{jobs}">
@@ -65,6 +66,7 @@
                 <td><input type="date" class="form-control" th:field="*{jobs[__${stat.index}__].startDate}"></td>
                 <td><input type="date" class="form-control" th:field="*{jobs[__${stat.index}__].endDate}"></td>
                 <td><input type="checkbox" class="form-control" th:field="*{jobs[__${stat.index}__].currentJob}"></td>
+                <td><a th:href="@{'./delete?type=job&index=' + ${stat.index}}">Delete</a></td>
             </tr>
         </table>
         <p><a href="./edit?add=job">Add Job</a></p>
@@ -79,6 +81,7 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Summary</th>
+                <th></th>
             </tr>
             </thead>
             <tr th:each="education, stat: *{educations}">
@@ -87,6 +90,7 @@
                 <td><input type="date" class="form-control" th:field="*{educations[__${stat.index}__].startDate}"></td>
                 <td><input type="date" class="form-control" th:field="*{educations[__${stat.index}__].endDate}"></td>
                 <td><input class="form-control" th:field="*{educations[__${stat.index}__].summary}"></td>
+                <td><a th:href="@{'./delete?type=education&index=' + ${stat.index}}">Delete</a></td>
             </tr>
         </table>
         <p><a href="./edit?add=education">Add Education</a></p>
@@ -95,6 +99,7 @@
         <table>
             <tr th:each="skill, stat: *{skills}">
                 <td><input class="form-control" th:field="*{skills[__${stat.index}__]}"></td>
+                <td><a th:href="@{'./delete?type=skill&index=' + ${stat.index}}">Delete</a></td>
             </tr>
         </table>
         <p><a href="./edit?add=skill">Add Skill</a></p>

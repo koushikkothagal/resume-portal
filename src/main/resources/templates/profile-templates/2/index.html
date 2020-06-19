@@ -37,7 +37,11 @@
         
             <!-- Microformats! -->
         
-            <h1 class="fn"><span th:text="${userProfile.firstName}">Joe</span> <span th:text="${userProfile.lastName}">Bloggs</span></h1>
+            <h1 class="fn">
+                <span th:text="${userProfile.firstName}">Joe</span>
+                <span th:text="${userProfile.lastName}">Bloggs</span>
+                <a th:if="${currentUsersProfile}" href="/edit">Edit</a>
+            </h1>
         
             <p>
                 Cell: <span class="tel" th:text="${userProfile.phone}">555-666-7777</span><br />
