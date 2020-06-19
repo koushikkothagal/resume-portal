@@ -6,10 +6,7 @@ import io.javabrains.resumeportal.models.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDate;
@@ -85,12 +82,20 @@ public class HomeController {
     }
 
     @GetMapping("/edit")
-    public String edit(Model model, Principal principal) {
+    public String edit(Model model, Principal principal, @RequestParam(required = false) String add) {
         String userId = principal.getName();
         model.addAttribute("userId", userId);
         Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(userId);
         userProfileOptional.orElseThrow(() -> new RuntimeException("Not found: " + userId));
         UserProfile userProfile = userProfileOptional.get();
+        if ("job".equals(add)) {
+            userProfile.getJobs().add(new Job());
+        } else if ("education".equals(add)) {
+            userProfile.getEducations().add(new Education());
+        } else if ("skill".equals(add)) {
+            userProfile.getSkills().add("");
+        }
+
         model.addAttribute("userProfile", userProfile);
         return "profile-edit";
     }
