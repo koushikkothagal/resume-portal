@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,8 +84,21 @@ public class HomeController {
     }
 
     @GetMapping("/edit")
-    public String edit() {
-        return "edit page";
+    public String edit(Model model, Principal principal) {
+        String userId = principal.getName();
+        model.addAttribute("userId", userId);
+        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(userId);
+        userProfileOptional.orElseThrow(() -> new RuntimeException("Not found: " + userId));
+        UserProfile userProfile = userProfileOptional.get();
+        model.addAttribute("userProfile", userProfile);
+        return "profile-edit";
+    }
+
+    @PostMapping("/edit")
+    public String postEdit(Model model, Principal principal) {
+        String userId = principal.getName();
+        // Save the updated values in the form
+        return "redirect:/view/" + userId;
     }
 
     @GetMapping("/view/{userId}")

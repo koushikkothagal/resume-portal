@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <h1 th:text="${userId} + '\'s Profile'">Profile</h1>
+    <div class="container">
+
+    <form action="#" th:action="@{/edit}" th:object="${userProfile}" method="post">
+        <div class="form-group">
+            <label>First Name</label>
+            <input class="form-control" th:field="*{firstName}">
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input class="form-control" th:field="*{lastName}">
+        </div>
+
+        <div class="form-group">
+            <label>Email address</label>
+            <input  class="form-control" th:field="*{email}">
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input class="form-control" th:field="*{phone}">
+        </div>
+
+        <div class="form-group">
+            <label>Designation</label>
+            <input class="form-control" th:field="*{designation}">
+        </div>
+
+
+
+    </form>
+    </div>
+</body>
+</html>
