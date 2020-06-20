@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.javabrains</groupId>
 	<artifactId>resume-portal</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>resume-portal</name>
 	<description>Resume portal for Java Brains</description>
 
@@ -43,9 +43,9 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.18</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

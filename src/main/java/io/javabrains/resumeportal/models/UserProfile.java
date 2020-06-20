@@ -21,12 +21,12 @@ public class UserProfile {
 
     @OneToMany(cascade = CascadeType.ALL,
         orphanRemoval = true)
-    @JoinColumn(name = "job_id")
+    @JoinColumn(name = "id")
     List<Job> jobs = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JoinColumn(name = "education_id")
+    @JoinColumn(name = "id")
     List<Education> educations = new ArrayList<>();
 
     @ElementCollection(targetClass=String.class)
