@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Joe Bloggs - Curriculum Vitae</title>
+	<!-- Adding dynamic title-->
+	<title
+	th:text="${userProfile.firstName+' '+userProfile.lastName+' - Curriculum Vitae'}">title field</title>
 
 <meta name="viewport" content="width=device-width"/>
 <meta name="description" content="The Curriculum Vitae of Joe Bloggs."/>
@@ -20,9 +22,11 @@
 
 		
 		<div id="name">
-			<h1 class="quickFade delayTwo">
-				<span th:text="${userProfile.firstName}">Joe</span>
-				<span th:text="${userProfile.lastName}">Bloggs</span>
+			<h1 class="quickFade delayTwo" >
+				<span th:text="${userProfile.firstName+userProfile.lastName}">Joe Bloggs</span>
+				<!-- We can merge both the first name and last name-->
+
+
 				<a th:if="${currentUsersProfile}" href="/edit">Edit</a>
 			</h1>
 			<h2 class="quickFade delayThree" th:text="${userProfile.designation}">Job Title</h2>
@@ -30,7 +34,8 @@
 		
 		<div id="contactDetails" class="quickFade delayFour">
 			<ul>
-				<li>e: <span th:text="${userProfile.email}">joe@bloggs.com</span></li>
+				<!-- Adding th:href for thymeleaf specific redirection-->
+				<li><a th:href="${userProfile.email}" target="_blank" th:text="${userProfile.email}">email field</a></li>
 				<li>m: <span th:text="${userProfile.phone}">01234567890</span></li>
 			</ul>
 		</div>
