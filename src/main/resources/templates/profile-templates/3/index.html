@@ -2,7 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-	<title>Jonathan Doe | Web Designer, Director | name@yourdomain.com</title>
+	<!-- Making the title dynamic -->
+	<title
+	th:text="${userProfile.firstName+' '+userProfile.lastName+' | '+userProfile.designation+' , '+' | '+userProfile.email}">title field</title>
+
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 	<meta name="keywords" content="" />
@@ -20,13 +23,16 @@
 		<div id="hd">
 			<div class="yui-gc">
 				<div class="yui-u first">
-					<h1><span th:text="${userProfile.firstName}">Joe</span> <span th:text="${userProfile.lastName}">Bloggs</span></h1>
+					<!-- We can merge both the first name and last name-->
+					<h1 th:text="${userProfile.firstName+' '+userProfile.lastName}">Name</h1>
 					<h2 th:text="${userProfile.designation}">Web Designer, Director</h2>
 				</div>
 
 				<div class="yui-u">
 					<div class="contact-info">
-						<h3><a th:text="${userProfile.email}" href="${userProfile.email}">name@yourdomain.com</a></h3>
+						<!-- TODO: Find out how to add variable to attribute value and update all templates-->
+                		<!-- Adding th:href to make it work-->
+						<h3><a th:text="${userProfile.email}" th:href="${userProfile.email}">name@yourdomain.com</a></h3>
 						<h3 th:text="${userProfile.phone}">(313) - 867-5309</h3>
 					</div><!--// .contact-info -->
 				</div>
@@ -151,9 +157,12 @@
 				</div><!--// .yui-b -->
 			</div><!--// yui-main -->
 		</div><!--// bd -->
-
+		<!-- Adding a dynamic footer-->
 		<div id="ft">
-			<p>Jonathan Doe &mdash; <a href="mailto:name@yourdomain.com">name@yourdomain.com</a> &mdash; (313) - 867-5309</p>
+			<p th:text="${userProfile.firstName+' '+userProfile.lastName}"> &mdash; 
+				<a class="email" th:href="${userProfile.email}" target="_blank" th:text="${userProfile.email}"></a>
+					 &mdash; <p th:text="${userProfile.phone}">(313) - 86</p></p>
+				
 		</div><!--// footer -->
 
 	</div><!-- // inner -->
